@@ -34,7 +34,11 @@
             <div class="thumbnail">
                 <img src="{{asset(!empty($course->course_image)?'uploads/'.$course->course_image:'http://placehold.it/320x150') }}" alt="" height="320" width="150">
                 <div class="caption">
-                    <h4 class="pull-right">${{ $course->price }}</h4>
+                    <h4 class="pull-right">@if ($course->price != 0)
+                        {{ $course->price }} ₮
+                         @else
+                         Free
+                    @endif</h4>
                     <h4><a href="{{ route('courses.show', [$course->slug]) }}">{{ $course->title }}</a>
                     </h4>
                     <p>{{ $course->description }}</p>
